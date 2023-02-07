@@ -7,22 +7,22 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
-  const [hideform, sethideform] = useState('form is-hidden');
-  const [newFormButton, setNewFormButton] = useState('AddNewExp');
+  // const [hideform, sethideform] = useState('form is-hidden');
+  // const [newFormButton, setNewFormButton] = useState('AddNewExp');
 
-  const hideFormHandler = () => {
-    if (hideform === 'form is-hidden') {
-      sethideform('form');
-    } else {
-      sethideform('form is-hidden');
-      setNewFormButton('AddNewExp');
-    }
-  };
+  // const hideFormHandler = () => {
+  //   if (hideform === 'form is-hidden') {
+  //     sethideform('form');
+  //   } else {
+  //     sethideform('form is-hidden');
+  //     setNewFormButton('AddNewExp');
+  //   }
+  // };
 
-  const newFormButtonHandler = () => {
-    setNewFormButton('AddNewExp is-hidden');
-    sethideform('form');
-  };
+  // const newFormButtonHandler = () => {
+  //   setNewFormButton('AddNewExp is-hidden');
+  //   sethideform('form');
+  // };
 
   //   // One State:
   //   const [userInput, setUserInput] = useState({
@@ -63,7 +63,7 @@ const ExpenseForm = (props) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
@@ -77,10 +77,8 @@ const ExpenseForm = (props) => {
 
   return (
     <>
-      <button onClick={newFormButtonHandler} className={newFormButton}>
-        Add New Expense
-      </button>
-      <form className={hideform} onSubmit={submitHandler}>
+      <button>Add New Expense</button>
+      <form onSubmit={submitHandler}>
         <div className='new-expense__controls'>
           <div className='new-expense__control'>
             <label>Title</label>
@@ -112,8 +110,10 @@ const ExpenseForm = (props) => {
           </div>
         </div>
         <div className='new-expense__actions'>
-          <button onClick={hideFormHandler}>Cancel</button>
-          <button onClick={hideFormHandler}>Add Expense</button>
+          <button type='button' onClick={props.onCancel}>
+            Cancel
+          </button>
+          <button type='submit'>Add Expense</button>
         </div>
       </form>
     </>
