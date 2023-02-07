@@ -1,3 +1,11 @@
+.form.is-hidden {
+  display: none;
+}
+
+.AddNewExp.is-hidden {
+  display: none;
+}
+
 .new-expense__controls {
   display: flex;
   flex-wrap: wrap;
